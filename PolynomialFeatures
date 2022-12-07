@@ -1,0 +1,21 @@
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn import linear_model
+import numpy as np
+
+#Database
+# x = Data, y = Target
+x = [[1], [2], [4], [6], [8], [10], [12], [14], [16], [18], [20]]
+y = [1, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40]
+
+#Data uji
+predict = np.array([[10]])
+poly = PolynomialFeatures(degree=2)
+x_= poly.fit_transform(x)
+predict_= poly.fit_transform(predict)
+regr = linear_model.LinearRegression()
+regr.fit(x_,y)
+
+#Menampilkan data prediksi
+print ("Prediksi")
+print ("Input = ", predict)
+print ("Output = ", regr.predict(predict_))
